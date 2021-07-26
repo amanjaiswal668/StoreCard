@@ -9,10 +9,10 @@ const { Schema } = mongoose;
 app.set('view engine', 'ejs');
 
 app.use(express.static("public"));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
-mongoose.connect("mongodb://localhost:27017/papa", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://admin-amanjaiswal:Wf8MqdjZCigmQGE1@storecluster01.nt1nr.mongodb.net/papa", { useNewUrlParser: true });
 
 // Schema
 
@@ -126,6 +126,12 @@ app.get("/custom", function (req, res, next) {
 
 // Securely connected to the server.
 
-app.listen(3000, function () {
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+}
+
+app.listen(port, function () {
     console.log("App listening to port 3000.")
 });
