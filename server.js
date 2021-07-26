@@ -1,0 +1,131 @@
+//Declearation of Constants and required fields.
+
+var express = require("express");
+var bodyParser = require('body-parser');
+var db = require('./db');
+const app = express();
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+app.set('view engine', 'ejs');
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+
+mongoose.connect("mongodb://localhost:27017/papa", { useNewUrlParser: true });
+
+// Schema
+
+const productSchema = new Schema({
+    productName: String,
+    productQuantity: String
+});
+
+const itemSchema = new Schema({
+    department: String,
+    product: [
+        {
+            productName: String,
+            productQuantity: String
+        }
+    ],
+    voucher: String
+});
+
+const Item = mongoose.model("Item", itemSchema);
+// -------------------------------------------------------------------------------------------------------------------
+// CRUD Operations start.
+
+// Access the homepage of the API.
+app.get("/", function (req, res) {
+    res.send("Welcome to homepage");
+});
+
+//  ---- CREATE ----
+
+// ================================NoSQL(MongoDB)=========================================
+
+app.post("/adddata", function (req, res, next) {
+    const item = new Item(req.body);
+    // console.log(item);
+    console.log(item);
+    item.save();
+
+});
+
+
+app.get("/alldata", function (req, res) {
+
+    Item.find({}, function (err, foundItems) {
+        // res.send(foundItems);
+
+        res.render("table", { userData: foundItems });
+    });
+})
+
+// ============================MYSQL========================================================
+
+// Send data with single image to the database.
+
+app.post("/add", function (req, res, next) {
+
+    var departmentName = req.body.department;
+    var productName = req.body.product;
+    var quantity = req.body.quantity;
+    var voucherName = req.body.voucher;
+
+    var sql = `INSERT into vbu (department,product,quantity, voucher) VALUES ("${departmentName}", "${productName}", "${quantity}", "${voucherName}")`;
+    db.query(sql, function (err, result) {
+        if (err) {
+            res.status(500).send({ error: 'Unable to send data to the database' });
+        }
+        res.send("Upload success");
+    });
+});
+
+
+//  ---- READ ----
+// Access all the Data from the databse.
+
+app.get("/all", function (req, res, next) {
+    var sql = "SELECT * FROM vbu";
+    db.query(sql, function (err, rows, fields) {
+        if (err) {
+
+            res.status(500).send({ error: 'Unable to fetch data from the database' });
+        }
+        // res.json(rows);
+        res.render("table", { userData: rows })
+    })
+    // res.send("Success!!!")
+})
+
+
+
+app.get("/custom", function (req, res, next) {
+    // var sql = "SELECT * FROM vbu WHERE product='${departmentName}'";
+    var sql = "SELECT * FROM vbu WHERE product= 'pen'";
+    db.query(sql, function (err, rows, fields) {
+        if (err) {
+
+            res.status(500).send({ error: 'Unable to fetch data from the database' });
+        }
+        // res.json(rows);
+        res.render("table", { userData: rows })
+    })
+    // res.send("Success!!!")
+})
+
+//  ---- UPDATE ----
+
+
+//  ---- DELETE ----
+
+
+// CRUD Operations end.
+
+// Securely connected to the server.
+
+app.listen(3000, function () {
+    console.log("App listening to port 3000.")
+});

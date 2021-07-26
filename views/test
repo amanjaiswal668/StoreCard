@@ -1,0 +1,36 @@
+{
+    "department": "Library",
+
+        "product" :[{
+            "productName" : "Sanatizer",
+            "productQuantity": "5"
+        },
+        {
+            "productName" : "Bulb",
+            "productQuantity": "5"
+        }
+        ],
+    "voucher": "2"
+
+}
+
+[
+    {
+        "department": "Library",
+        productName: 5
+        productQuantity: 5
+        voucher: 2
+    },
+    {
+        "department": "Library",
+        productName: 5
+        productQuantity: 5
+        voucher: 2
+    },
+    {
+        "department": "Library",
+        productName: 5
+        productQuantity: 5
+        voucher: 2
+    }
+]
