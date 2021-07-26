@@ -8,18 +8,13 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 app.set('view engine', 'ejs');
 
-
-app.use(bodyParser.json());
+app.use(express.static("public"));
+// app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 mongoose.connect("mongodb://localhost:27017/papa", { useNewUrlParser: true });
 
 // Schema
-
-const productSchema = new Schema({
-    productName: String,
-    productQuantity: String
-});
 
 const itemSchema = new Schema({
     department: String,
@@ -38,7 +33,8 @@ const Item = mongoose.model("Item", itemSchema);
 
 // Access the homepage of the API.
 app.get("/", function (req, res) {
-    res.send("Welcome to homepage");
+    console.log(1);
+    res.render("index");
 });
 
 //  ---- CREATE ----
@@ -46,19 +42,20 @@ app.get("/", function (req, res) {
 // ================================NoSQL(MongoDB)=========================================
 
 app.post("/adddata", function (req, res, next) {
+    console.log(2);
     const item = new Item(req.body);
     // console.log(item);
     console.log(item);
     item.save();
+    res.send("Success")
 
 });
 
 
 app.get("/alldata", function (req, res) {
+    console.log(3);
 
     Item.find({}, function (err, foundItems) {
-        // res.send(foundItems);
-
         res.render("table", { userData: foundItems });
     });
 })
@@ -68,6 +65,7 @@ app.get("/alldata", function (req, res) {
 // Send data with single image to the database.
 
 app.post("/add", function (req, res, next) {
+    console.log(4);
 
     var departmentName = req.body.department;
     var productName = req.body.product;
@@ -88,6 +86,7 @@ app.post("/add", function (req, res, next) {
 // Access all the Data from the databse.
 
 app.get("/all", function (req, res, next) {
+    console.log(5);
     var sql = "SELECT * FROM vbu";
     db.query(sql, function (err, rows, fields) {
         if (err) {
@@ -103,6 +102,7 @@ app.get("/all", function (req, res, next) {
 
 
 app.get("/custom", function (req, res, next) {
+    console.log(6);
     // var sql = "SELECT * FROM vbu WHERE product='${departmentName}'";
     var sql = "SELECT * FROM vbu WHERE product= 'pen'";
     db.query(sql, function (err, rows, fields) {
