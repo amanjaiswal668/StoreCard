@@ -41,11 +41,17 @@ app.get("/", function (req, res) {
 // ================================NoSQL(MongoDB)=========================================
 
 app.post("/adddata", function (req, res, next) {
-    console.log(2);
+    console.log(req.body);
+    req.body.product = [];
+    const product = {
+        productName: req.body['product.productName'],
+        productQuantity: req.body['product.productQuantity']
+    }
+    req.body.product.push(product);
     const item = new Item(req.body);
     console.log(item);
     item.save();
-    res.send("Success")
+    res.send("Success!!!!")
 
 });
 

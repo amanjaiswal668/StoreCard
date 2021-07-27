@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <h2>Making HTML dropdowns not suck</h2>
-        <table>
+        <table class=" table order-list">
             <form method="POST" action="/adddata" id="form1">
                 <span class="color-picker"></span>
 
@@ -38,13 +38,10 @@
                             </select>
                         </span>
                     </td>
-
-
-
                     <td>
                         <span class="custom-dropdown big">
-                            <select name="product">
-                                <option value="Pen">Pen</option>
+                            <select name="product.productName">
+                                <option value="pen">Pen</option>
                                 <option value="Pencil">Pencil</option>
                                 <option value="Mask">Mask</option>
                                 <option value="Sanetizer">Sanetizer</option>
@@ -52,37 +49,100 @@
                             </select>
                         </span>
                     </td>
-
-
                     <td>
-                        <span class="custom-dropdown big">
-                            <select>
-                                <option>Pen</option>
-                                <option>Pencil</option>
-                                <option>Mask</option>
-                                <option>Sanetizer</option>
-                                <option>Gloves</option>
-                            </select>
-                        </span>
+                        <label for="quantityData">Product Quantity:</label>
+                        <input type="text" id="quantityData" name="product.productQuantity">
                     </td>
 
-                    <td>
-                        <span class="custom-dropdown big">
-                            <select>
-                                <option>Pen</option>
-                                <option>Pencil</option>
-                                <option>Mask</option>
-                                <option>Sanetizer</option>
-                                <option>Gloves</option>
-                            </select>
-                        </span>
+                    <td id="voucherId">
+                        <label for="voucherData">Voucher Number:</label>
+                        <input type="text" id="voucherData" name="voucher">
                     </td>
                 </tr>
                 </tr>
-                <input type="submit" value="Submit">
+
+                <input type="submit" value="Submit" id="form1">
             </form>
+            <tfoot>
+                <tr>
+                    <td colspan="5" style="text-align: left;">
+                        <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                    </td>
+                    <td colspan="5" style="text-align: left;">
+                        <input type="button" class="btn btn-lg btn-block " id="addcol" value="Add Column" />
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+            </tfoot>
         </table>
+
     </div>
 </body>
+
+</select>
+
+<script>
+    $(document).ready(function () {
+        var counter = 0;
+
+        $("#addrow").on("click", function () {
+            var newRow = $("<tr>");
+            var cols = "";
+
+            cols += '<td><span class="custom-dropdown big"><select name="department"><option value="VC">V.C</option><option value="PVC">PVC</option><option value="Library">Library</option><option value="Accounts">Accounts</option><option value="AR">AR</option></select></span></td>';
+            cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td>';
+            cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity' + counter + '" /></td>';
+            cols += '<td><label for="voucherData">Voucher Number:</label><input type="text" id="voucherData" name="voucher' + counter + '" /></td>';
+
+            cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';
+            newRow.append(cols);
+            $("table.order-list").append(newRow);
+            counter++;
+        });
+
+        // =======================================================
+
+        $("#addcol").on("click", function () {
+            var newRow = $("<tr>");
+            var cols = "";
+
+            cols += '<td></td>'
+            cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td>';
+            cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity' + counter + '" /></td>';
+
+            cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';
+            newRow.append(cols);
+            $("table.order-list").append(newRow);
+            counter++;
+        });
+
+        // ===================================================
+
+        $("table.order-list").on("click", ".ibtnDel", function (event) {
+            $(this).closest("tr").remove();
+            counter -= 1
+        });
+
+
+    });
+
+
+
+    function calculateRow(row) {
+        var price = +row.find('input[name^="price"]').val();
+
+    }
+
+    function calculateGrandTotal() {
+        var grandTotal = 0;
+        $("table.order-list").find('input[name^="price"]').each(function () {
+            grandTotal += +$(this).val();
+        });
+        $("#grandtotal").text(grandTotal.toFixed(2));
+    }
+</script>
+
+
 
 </html>

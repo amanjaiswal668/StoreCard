@@ -87,7 +87,7 @@ body {
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: auto;
     overflow-x:auto;
   }
   
@@ -100,4 +100,10 @@ body {
   
   tr:nth-child(even) {
     /* background-color: #dddddd; */
+  }
+
+  #voucherData,#quantityData{
+    color: black;
+    font-size: large;
+    width: 40%;
   }
