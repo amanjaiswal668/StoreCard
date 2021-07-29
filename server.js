@@ -19,11 +19,11 @@ const itemSchema = new Schema({
     department: String,
     product: [
         {
-            productName: String,
-            productQuantity: String
+            productName: [String],
+            productQuantity: [String]
         }
     ],
-    voucher: String
+    voucher: Number
 });
 
 const Item = mongoose.model("Item", itemSchema);
@@ -31,9 +31,9 @@ const Item = mongoose.model("Item", itemSchema);
 // CRUD Operations start.
 
 // Access the homepage of the API.
-app.get("/", function (req, res) {
-    console.log(1);
+app.get("/", function (req, res, err) {
     res.render("index");
+
 });
 
 //  ---- CREATE ----
@@ -41,25 +41,35 @@ app.get("/", function (req, res) {
 // ================================NoSQL(MongoDB)=========================================
 
 app.post("/adddata", function (req, res, next) {
-    console.log(req.body);
     req.body.product = [];
-    const product = {
-        productName: req.body['product.productName'],
-        productQuantity: req.body['product.productQuantity']
-    }
-    req.body.product.push(product);
-    const item = new Item(req.body);
-    console.log(item);
-    item.save();
-    res.send("Success!!!!")
+    for (i = 0; i < req.body['product.productQuantity'].length; i++) {
+        const product = {
+            productName: req.body['product.productName'][i],
 
+            productQuantity: req.body['product.productQuantity'][i]
+
+        }
+        req.body.product.push(product);
+    }
+    const item = new Item(req.body);
+    item.save(function (err) {
+        if (!err) {
+            res.redirect("/");
+        } else {
+            res.send(err);
+        }
+    });
 });
 
-app.get("/alldata", function (req, res) {
-    console.log(3);
+// Get all data from the database.
 
+app.get("/alldata", function (req, res) {
     Item.find({}, function (err, foundItems) {
-        res.render("table", { userData: foundItems });
+        if (!err) {
+            res.render("input", { userData: foundItems });
+        } else {
+            res.send(err);
+        }
     });
 })
 

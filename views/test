@@ -34,3 +34,13 @@
         voucher: 2
     }
 ]
+
+
+
+
+
+
+
+
+
+{"_id":{"$oid":"610034541ddbbd3bb0926c5e"},"department":"Accounts","product":[{"_id":{"$oid":"610034541ddbbd3bb0926c60"},"productName":"Pencil","productQuantity":"4"}],"voucher":"24","__v":{"$numberInt":"0"}}

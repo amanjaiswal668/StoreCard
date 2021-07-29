@@ -1,0 +1,185 @@
+<head>
+    <!-- <link rel="stylesheet" href="/css/newIndex.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+
+    body {
+        background: #fb887c;
+        color: #fff;
+        font-family: 'Lato', Arial, sans-serif;
+        overflow: hidden;
+    }
+
+
+    html {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0;
+        /* Remove scrollbar space */
+        background: transparent;
+        /* Optional: just make scrollbar invisible */
+    }
+
+    /* Optional: show position indicator in red */
+    ::-webkit-scrollbar-thumb {
+        background: #FF0000;
+    }
+
+
+
+    h1 {
+        font-family: "proxima-nova", sans-serif;
+        letter-spacing: -0.01em;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 60px;
+        margin-left: -3px;
+        line-height: 1em;
+        color: #fff;
+        text-align: center;
+        margin-bottom: 8px;
+        text-rendering: optimizeLegibility;
+    }
+
+    table {
+        width: 80%;
+        margin: auto;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid #fff;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 15px;
+    }
+
+    #searchBox {
+
+        font-size: 18px;
+        color: aqua;
+        margin-left: 10px;
+        margin-bottom: 10px;
+
+    }
+
+    #myInput {
+
+        border-radius: 10px;
+        border-style: groove;
+        font-family: "proxima-nova", sans-serif;
+        letter-spacing: -0.01em;
+        font-weight: 700;
+        font-style: normal;
+        height: 25px;
+    }
+
+    /* ======================================================================= */
+</style>
+
+<body>
+    <h1>Product Details</h1>
+    <hr>
+    <div class="container" id="searchBox">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search here">
+    </div>
+    <table id="myTable">
+        <thead>
+            <tr>
+
+                <th rowspan="2" colspan="">S.No</th>
+                <th rowspan="2">Department</th>
+                <th rowspan="1" colspan="2">Product</th>
+                <th rowspan="2" colspan="">Voucher</th>
+            </tr>
+            <tr>
+
+                <th rowspan="2">Product Name</th>
+                <th rowspan="2">Product Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(userData.length!=0){ userData.forEach(function(data, i){ %>
+                <tr>
+                    <td>
+                        <%= i + 1 %>
+                    </td>
+                    <td>
+                        <%=data.department %>
+                    </td>
+                    <td>
+                        <% for (var key in data.product){%>
+                            <%= data.product[key].productName %><br>
+                                <hr>
+                                <% } %>
+                    </td>
+                    <td>
+                        <% for (var key in data.product){%>
+                            <%= data.product[key].productQuantity %><br>
+                                <hr>
+                                <% } %>
+                    </td>
+
+                    <td>
+                        <%=data.voucher %>
+                    </td>
+                    <% i++; }) %>
+                        <% } %>
+                </tr>
+
+        </tbody>
+    </table>
+</body>
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[1];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+
+
+
+    // $(document).ready(function () {
+
+    //     var $rows = $('table tr');
+    //     $('#myInput').keyup(function () {
+
+    //         var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+    //             reg = RegExp(val, 'i'),
+    //             text;
+
+    //         $rows.css("opacity", "1").filter(function () {
+    //             text = $(this).text().replace(/\s+/g, ' ');
+    //             return !reg.test(text);
+    //         }).css("opacity", "0.1");
+    //     });
+
+    // });
+</script>

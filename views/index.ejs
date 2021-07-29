@@ -15,8 +15,9 @@
 <body>
     <div class="container">
         <h2>Making HTML dropdowns not suck</h2>
-        <table class=" table order-list">
-            <form method="POST" action="/adddata" id="form1">
+        <form method="POST" action="/adddata" id="form1">
+            <table class=" table order-list">
+
                 <span class="color-picker"></span>
 
                 <br /><br />
@@ -61,21 +62,24 @@
                 </tr>
                 </tr>
 
-                <input type="submit" value="Submit" id="form1">
-            </form>
-            <tfoot>
-                <tr>
-                    <td colspan="5" style="text-align: left;">
-                        <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
-                    </td>
-                    <td colspan="5" style="text-align: left;">
-                        <input type="button" class="btn btn-lg btn-block " id="addcol" value="Add Column" />
-                    </td>
-                </tr>
-                <tr>
-                </tr>
-            </tfoot>
-        </table>
+
+
+                <tfoot>
+                    <tr>
+                        <td colspan="5" style="text-align: left;">
+                            <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
+                        </td>
+                        <td colspan="5" style="text-align: left;">
+                            <input type="button" class="btn btn-lg btn-block " id="addcol" value="Add Column" />
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                </tfoot>
+            </table>
+            <input type="submit" value="Submit" id="form1">
+        </form>
+
 
     </div>
 </body>
@@ -90,10 +94,11 @@
             var newRow = $("<tr>");
             var cols = "";
 
+            // cols += '<td><form method="POST" action="/adddata" id="form1"><table class=" table order-list"><span class="color-picker"></span><br /><br /><tr><th>Department</th><th>Product</th><th>Quantity</th><th>Voucher</th></tr><tr><td><span class="custom-dropdown big"><select name="department"><option value="VC">V.C</option><option value="PVC">PVC</option><option value="Library">Library</option><option value="Accounts">Accounts</option><option value="AR">AR</option></select></span></td><td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td><td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"></td><td id="voucherId"><label for="voucherData">Voucher Number:</label><input type="text" id="voucherData" name="voucher"></td></tr></tr><tfoot><tr><td colspan="5" style="text-align: left;"><input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" /></td><td colspan="5" style="text-align: left;"><input type="button" class="btn btn-lg btn-block " id="addcol" value="Add Column" /></td></tr><tr></tr></tfoot></table><input type="submit" value="Submit" id="form1"></form></td>'
             cols += '<td><span class="custom-dropdown big"><select name="department"><option value="VC">V.C</option><option value="PVC">PVC</option><option value="Library">Library</option><option value="Accounts">Accounts</option><option value="AR">AR</option></select></span></td>';
             cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td>';
-            cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity' + counter + '" /></td>';
-            cols += '<td><label for="voucherData">Voucher Number:</label><input type="text" id="voucherData" name="voucher' + counter + '" /></td>';
+            cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"/></td>';
+            cols += '<td><label for="voucherData">Voucher Number:</label><input type="text" id="voucherData" name="voucher"/></td>';
 
             cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';
             newRow.append(cols);
@@ -104,6 +109,22 @@
         // =======================================================
 
         $("#addcol").on("click", function () {
+            var newRow = $("<tr>");
+            var cols = "";
+
+            cols += '<td></td>'
+            cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td>';
+            cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"/></td>';
+
+            cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';
+            newRow.append(cols);
+            $("table.order-list").append(newRow);
+            counter++;
+        });
+
+        // ===================================================
+
+        $("#addform").on("click", function () {
             var newRow = $("<tr>");
             var cols = "";
 
@@ -141,6 +162,25 @@
         });
         $("#grandtotal").text(grandTotal.toFixed(2));
     }
+
+
+
+    // function submitData() {
+    //     var table = $("table tbody");
+
+    //     table.find('tr').each(function (i) {
+    //         var $tds = $(this).find('td'),
+    //             productId = $tds.eq(0).text(),
+    //             product = $tds.eq(1).text(),
+    //             Quantity = $tds.eq(2).text();
+    //         Voucher = $tds.eq(3).text();
+    //         // do something with productId, product, Quantity
+    //         alert('Row ' + (i + 1) + ':\nId: ' + productId
+    //             + '\nProduct: ' + product
+    //             + '\nQuantity: ' + Quantity + '\nVoucher: ' + Voucher);
+    //     });
+    // }
+
 </script>
 
 

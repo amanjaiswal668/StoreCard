@@ -3,10 +3,13 @@
 
 <head>
     <title>Fetch using MySQL and Node.js</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="table-data">
+    <div class="table-data container table table-striped">
         <h2>All Products</h2>
         <center>
             <table border="1">
@@ -23,20 +26,25 @@
                         <td>
                             <%= i + 1 %>
                         </td>
+
                         <td>
                             <%=data.department %>
                         </td>
-                        <td rowspan="2">
-                            <% var i=1; data.product.forEach(function(newData){%>
-                                <%=newData.productName %>
-                                    <% })%>
+                        <td>
+                            <% for (var key in data.product){%>
+                                <%= data.product[key].productName %><br>
+                                    <hr>
+                                    <% } %>
                         </td>
 
                         <td>
-                            <% var i=1; data.product.forEach(function(newData){%>
-                                <%=newData.productQuantity %>
-                                    <% })%>
+                            <% for (var key in data.product){%>
+                                <%= data.product[key].productQuantity %><br>
+                                    <hr>
+                                    <% } %>
                         </td>
+
+
 
                         <td>
                             <%=data.voucher %>
