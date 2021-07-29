@@ -9,78 +9,103 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="/css/index.css">
 </head>
 
 <body>
     <div class="container">
-        <h2>Making HTML dropdowns not suck</h2>
-        <form method="POST" action="/adddata" id="form1">
-            <table class=" table order-list">
-
-                <span class="color-picker"></span>
-
-                <br /><br />
-                <tr>
-                    <th>Department</th>
-                    <th>Product</th>
-                    <th>Quantity</th>
-                    <th>Voucher</th>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="custom-dropdown big">
-                            <select name="department">
-                                <option value="VC">V.C</option>
-                                <option value="PVC">PVC</option>
-                                <option value="Library">Library</option>
-                                <option value="Accounts">Accounts</option>
-                                <option value="AR">AR</option>
-                            </select>
-                        </span>
-                    </td>
-                    <td>
-                        <span class="custom-dropdown big">
-                            <select name="product.productName">
-                                <option value="pen">Pen</option>
-                                <option value="Pencil">Pencil</option>
-                                <option value="Mask">Mask</option>
-                                <option value="Sanetizer">Sanetizer</option>
-                                <option value="Gloves">Gloves</option>
-                            </select>
-                        </span>
-                    </td>
-                    <td>
-                        <label for="quantityData">Product Quantity:</label>
-                        <input type="text" id="quantityData" name="product.productQuantity">
-                    </td>
-
-                    <td id="voucherId">
-                        <label for="voucherData">Voucher Number:</label>
-                        <input type="text" id="voucherData" name="voucher">
-                    </td>
-                </tr>
-                </tr>
-
-
-
-                <tfoot>
+        <h2>Store Data</h2>
+        <!-- <div class="container" id="viewData"> -->
+        <a href="/alldata" class="link"><button type="button"
+                class="btn btn-dark btn-lg download-button customButton">View Details</button></a>
+        <!-- </div> -->
+        <center>
+            <form method="POST" action="/adddata" id="form1">
+                <table class=" table order-list">
+                    <br /><br />
                     <tr>
-                        <td colspan="5" style="text-align: left;">
-                            <input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" />
-                        </td>
-                        <td colspan="5" style="text-align: left;">
-                            <input type="button" class="btn btn-lg btn-block " id="addcol" value="Add Column" />
-                        </td>
+                        <th>Department</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Voucher</th>
                     </tr>
                     <tr>
+                        <td>
+                            <span class="custom-dropdown big">
+                                <select name="department">
+                                    <option value="VC">V.C</option>
+                                    <option value="PVC">PVC</option>
+                                    <option value="Library">Library</option>
+                                    <option value="Accounts">Accounts</option>
+                                    <option value="AR">AR</option>
+                                    <option value="CCDC">CCDC</option>
+                                    <option value="DSW Section">DSW Section</option>
+                                    <option value="FA Section">FA Section</option>
+                                </select>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="custom-dropdown big">
+                                <select name="product.productName">
+                                    <option value="Default">Default</option>
+                                    <option value="pen">Pen</option>
+                                    <option value="Pencil">Pencil</option>
+                                    <option value="Mask">Mask</option>
+                                    <option value="Sanetizer">Sanetizer</option>
+                                    <option value="Gloves">Gloves</option>
+
+                                    <option value="A4 Paper">A4 Paper</option>
+                                    <option value="Knife">Knife</option>
+                                    <option value="Scale">Scale</option>
+                                    <option value="Borad File">Borad File</option>
+                                    <option value="Clothe Duster">Clothe Duster</option>
+                                    <option value="Notesheet">Notesheet</option>
+
+                                    <option value="Fly leave">Fly leave</option>
+                                    <option value="Tag">Tag</option>
+                                    <option value="Gum">Gum</option>
+                                    <option value="Ink Pad">Ink Pad</option>
+                                    <option value="Clip File">Clip File</option>
+                                    <option value="Stepler">Stepler</option>
+
+                                    <option value="Highlighter">Highlighter</option>
+                                    <option value="Marker">Marker</option>
+                                </select>
+                            </span>
+                        </td>
+                        <td>
+                            <label for="quantityData">Product Quantity:</label>
+                            <input type="text" id="quantityData" name="product.productQuantity">
+                        </td>
+
+                        <td id="voucherId">
+                            <label for="voucherData">Voucher Number:</label>
+                            <input type="text" id="voucherData" name="voucher">
+                        </td>
                     </tr>
-                </tfoot>
-            </table>
-            <input type="submit" value="Submit" id="form1">
-        </form>
+                    </tr>
 
 
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" style="text-align: left;">
+                                <input type="button" class="btn btn-lg btn-block customButton" id="addcol"
+                                    value="Add More" />
+                            </td>
+                            <!-- <td colspan="5" style="text-align: left;">
+                                <input type="button" class="btn btn-lg btn-block customButton" id="addcol"
+                                    value="Add Column" />
+                            </td> -->
+                        </tr>
+                        <tr>
+                        </tr>
+                    </tfoot>
+                </table>
+                <input type="submit" value="Submit" id="form1" class="btn btn-lg btn-block customButton">
+            </form>
+        </center>
     </div>
 </body>
 
@@ -90,21 +115,21 @@
     $(document).ready(function () {
         var counter = 0;
 
-        $("#addrow").on("click", function () {
-            var newRow = $("<tr>");
-            var cols = "";
+        // $("#addrow").on("click", function () {
+        //     var newRow = $("<tr>");
+        //     var cols = "";
 
-            // cols += '<td><form method="POST" action="/adddata" id="form1"><table class=" table order-list"><span class="color-picker"></span><br /><br /><tr><th>Department</th><th>Product</th><th>Quantity</th><th>Voucher</th></tr><tr><td><span class="custom-dropdown big"><select name="department"><option value="VC">V.C</option><option value="PVC">PVC</option><option value="Library">Library</option><option value="Accounts">Accounts</option><option value="AR">AR</option></select></span></td><td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td><td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"></td><td id="voucherId"><label for="voucherData">Voucher Number:</label><input type="text" id="voucherData" name="voucher"></td></tr></tr><tfoot><tr><td colspan="5" style="text-align: left;"><input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" /></td><td colspan="5" style="text-align: left;"><input type="button" class="btn btn-lg btn-block " id="addcol" value="Add Column" /></td></tr><tr></tr></tfoot></table><input type="submit" value="Submit" id="form1"></form></td>'
-            cols += '<td><span class="custom-dropdown big"><select name="department"><option value="VC">V.C</option><option value="PVC">PVC</option><option value="Library">Library</option><option value="Accounts">Accounts</option><option value="AR">AR</option></select></span></td>';
-            cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td>';
-            cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"/></td>';
-            cols += '<td><label for="voucherData">Voucher Number:</label><input type="text" id="voucherData" name="voucher"/></td>';
+        //     // cols += '<td><form method="POST" action="/adddata" id="form1"><table class=" table order-list"><span class="color-picker"></span><br /><br /><tr><th>Department</th><th>Product</th><th>Quantity</th><th>Voucher</th></tr><tr><td><span class="custom-dropdown big"><select name="department"><option value="VC">V.C</option><option value="PVC">PVC</option><option value="Library">Library</option><option value="Accounts">Accounts</option><option value="AR">AR</option></select></span></td><td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td><td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"></td><td id="voucherId"><label for="voucherData">Voucher Number:</label><input type="text" id="voucherData" name="voucher"></td></tr></tr><tfoot><tr><td colspan="5" style="text-align: left;"><input type="button" class="btn btn-lg btn-block " id="addrow" value="Add Row" /></td><td colspan="5" style="text-align: left;"><input type="button" class="btn btn-lg btn-block " id="addcol" value="Add Column" /></td></tr><tr></tr></tfoot></table><input type="submit" value="Submit" id="form1"></form></td>'
+        //     cols += '<td><span class="custom-dropdown big"><select name="department"><option value="VC">V.C</option><option value="PVC">PVC</option><option value="Library">Library</option><option value="Accounts">Accounts</option><option value="AR">AR</option></select></span></td>';
+        //     cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="Default">Default</option><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option><option value="A4 Paper">A4 Paper</option><option value="Knife">Knife</option><option value="Scale">Scale</option><option value="Borad File">Borad File</option><option value="Clothe Duster">Clothe Duster</option><option value="Notesheet">Notesheet</option><option value="Fly leave">Fly leave</option><option value="Tag">Tag</option><option value="Gum">Gum</option><option value="Ink Pad">Ink Pad</option><option value="Clip File">Clip File</option><option value="Stepler">Stepler</option></select></span></td>';
+        //     cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"/></td>';
+        //     cols += '<td><label for="voucherData">Voucher Number:</label><input type="text" id="voucherData" name="voucher"/></td>';
 
-            cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';
-            newRow.append(cols);
-            $("table.order-list").append(newRow);
-            counter++;
-        });
+        //     cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';
+        //     newRow.append(cols);
+        //     $("table.order-list").append(newRow);
+        //     counter++;
+        // });
 
         // =======================================================
 
@@ -113,7 +138,7 @@
             var cols = "";
 
             cols += '<td></td>'
-            cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td>';
+            cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="Default">Default</option><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option><option value="A4 Paper">A4 Paper</option><option value="Knife">Knife</option><option value="Scale">Scale</option><option value="Borad File">Borad File</option><option value="Clothe Duster">Clothe Duster</option><option value="Notesheet">Notesheet</option><option value="Fly leave">Fly leave</option><option value="Tag">Tag</option><option value="Gum">Gum</option><option value="Ink Pad">Ink Pad</option><option value="Clip File">Clip File</option><option value="Stepler">Stepler</option><option value="Highlighter">Highlighter</option><option value="Marker">Marker</option></select></span></td>';
             cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"/></td>';
 
             cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';

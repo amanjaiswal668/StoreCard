@@ -26,7 +26,14 @@ const itemSchema = new Schema({
     voucher: Number
 });
 
+const userSchema = new Schema({
+    email: String,
+    password: String
+})
+
 const Item = mongoose.model("Item", itemSchema);
+
+const User = mongoose.model("User", userSchema);
 // -------------------------------------------------------------------------------------------------------------------
 // CRUD Operations start.
 
@@ -35,6 +42,29 @@ app.get("/", function (req, res, err) {
     res.render("index");
 
 });
+
+
+// Admin Verification.
+
+app.post("/login", function (req, res) {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    User.findOne({ email: email }, function (err, foundUser) {
+        if (err) {
+            res.send("Error login the User. Please try again.")
+        } else {
+            if (foundUser) {
+                if (foundUser.password = password) {
+                    res.render(index);
+                } else {
+                    res.send("Invalid password.")
+                }
+            }
+        }
+    });
+});
+
 
 //  ---- CREATE ----
 
