@@ -39,7 +39,7 @@ const User = mongoose.model("User", userSchema);
 
 // Access the homepage of the API.
 app.get("/", function (req, res, err) {
-    res.render("admin");
+    res.render("index");
 
 });
 
@@ -48,50 +48,50 @@ app.get("/", function (req, res, err) {
 
 // Signup Admin
 
-app.get("/register", function (req, res, err) {
-    res.render("adminRegistration");
+// app.get("/register", function (req, res, err) {
+//     res.render("adminRegistration");
 
-});
+// });
 
-app.post("/signup", function (req, res) {
+// app.post("/signup", function (req, res) {
 
-    const newUser = new User({
-        email: req.body.email,
-        password: req.body.password
-    });
+//     const newUser = new User({
+//         email: req.body.email,
+//         password: req.body.password
+//     });
 
-    newUser.save(function (err) {
-        if (err) {
-            res.send("Error creating Admin.");
-        } else {
-            res.send("Admin Created Successfully.");
-        }
-    });
-});
+//     newUser.save(function (err) {
+//         if (err) {
+//             res.send("Error creating Admin.");
+//         } else {
+//             res.send("Admin Created Successfully.");
+//         }
+//     });
+// });
 
 
 // Login as Admin
 
-app.post("/login", function (req, res) {
-    const email = req.body.email;
-    const password = req.body.password;
+// app.post("/login", function (req, res) {
+//     const email = req.body.email;
+//     const password = req.body.password;
 
-    User.findOne({ email: email }, function (err, foundUser) {
-        if (err) {
-            res.send("Error login the User. Please try again.")
-        } else {
-            if (foundUser) {
-                if (foundUser.password = password) {
-                    res.render("index");
-                } else {
-                    res.send("Invalid password.")
-                }
-            }else{
-                res.send("Invalid user.")
-            }
-        }
-    });
-});
+//     User.findOne({ email: email }, function (err, foundUser) {
+//         if (err) {
+//             res.send("Error login the User. Please try again.")
+//         } else {
+//             if (foundUser) {
+//                 if (foundUser.password = password) {
+//                     res.render("index");
+//                 } else {
+//                     res.send("Invalid password.")
+//                 }
+//             }else{
+//                 res.send("Invalid user.")
+//             }
+//         }
+//     });
+// });
 
 
 //  ---- CREATE ----
@@ -112,7 +112,7 @@ app.post("/adddata", function (req, res, next) {
     const item = new Item(req.body);
     item.save(function (err) {
         if (!err) {
-            res.redirect("index");
+            res.redirect("/");
         } else {
             res.send(err);
         }
