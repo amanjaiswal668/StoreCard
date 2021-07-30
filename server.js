@@ -39,12 +39,38 @@ const User = mongoose.model("User", userSchema);
 
 // Access the homepage of the API.
 app.get("/", function (req, res, err) {
-    res.render("index");
+    res.render("admin");
 
 });
 
 
 // Admin Verification.
+
+// Signup Admin
+
+app.get("/register", function (req, res, err) {
+    res.render("adminRegistration");
+
+});
+
+app.post("/signup", function (req, res) {
+
+    const newUser = new User({
+        email: req.body.email,
+        password: req.body.password
+    });
+
+    newUser.save(function (err) {
+        if (err) {
+            res.send("Error creating Admin.");
+        } else {
+            res.send("Admin Created Successfully.");
+        }
+    });
+});
+
+
+// Login as Admin
 
 app.post("/login", function (req, res) {
     const email = req.body.email;
@@ -56,10 +82,12 @@ app.post("/login", function (req, res) {
         } else {
             if (foundUser) {
                 if (foundUser.password = password) {
-                    res.render(index);
+                    res.render("index");
                 } else {
                     res.send("Invalid password.")
                 }
+            }else{
+                res.send("Invalid user.")
             }
         }
     });

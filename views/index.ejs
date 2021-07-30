@@ -33,7 +33,7 @@
                     <tr>
                         <td>
                             <span class="custom-dropdown big">
-                                <select name="department">
+                                <select name="department" id="departmentSelect">
                                     <option value="VC">V.C</option>
                                     <option value="PVC">PVC</option>
                                     <option value="Library">Library</option>
@@ -42,35 +42,124 @@
                                     <option value="CCDC">CCDC</option>
                                     <option value="DSW Section">DSW Section</option>
                                     <option value="FA Section">FA Section</option>
+
+                                    <!-- New -->
+
+                                    <option value="Estt Section">Estt Section</option>
+                                    <option value="Dispatch">Dispatch</option>
+                                    <option value="Tribal and Regional Language">Tribal and Regional Language</option>
+                                    <option value="FA Residence">FA Residence</option>
+                                    <option value="Anthropology">Anthropology</option>
+                                    <option value="Registrar">Registrar</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Proctor Office">Proctor Office</option>
+
+                                    <option value="FO Section">FO Section</option>
+                                    <option value="RUSA">RUSA</option>
+                                    <option value="NSS">NSS</option>
+                                    <option value="Pension Cell">Pension Cell</option>
+                                    <option value="Examination">Examination</option>
+                                    <option value="Central Library">Central Library</option>
+                                    <option value="Computer Cell">Computer Cell</option>
+
                                 </select>
                             </span>
                         </td>
                         <td>
                             <span class="custom-dropdown big">
-                                <select name="product.productName">
+                                <select name="product.productName" id="productSelect">
                                     <option value="Default">Default</option>
                                     <option value="pen">Pen</option>
                                     <option value="Pencil">Pencil</option>
                                     <option value="Mask">Mask</option>
                                     <option value="Sanetizer">Sanetizer</option>
                                     <option value="Gloves">Gloves</option>
-
                                     <option value="A4 Paper">A4 Paper</option>
                                     <option value="Knife">Knife</option>
                                     <option value="Scale">Scale</option>
                                     <option value="Borad File">Borad File</option>
                                     <option value="Clothe Duster">Clothe Duster</option>
                                     <option value="Notesheet">Notesheet</option>
-
                                     <option value="Fly leave">Fly leave</option>
                                     <option value="Tag">Tag</option>
                                     <option value="Gum">Gum</option>
                                     <option value="Ink Pad">Ink Pad</option>
                                     <option value="Clip File">Clip File</option>
                                     <option value="Stepler">Stepler</option>
-
                                     <option value="Highlighter">Highlighter</option>
                                     <option value="Marker">Marker</option>
+
+                                    <!-- New -->
+                                    <option value="Wiper">Wiper</option>
+                                    <option value="Tubelight">Tubelight</option>
+                                    <option value="Harpic">Harpic</option>
+                                    <option value="Odonil">Odonil</option>
+                                    <option value="Fennile">Fennile</option>
+                                    <option value="A4 Envelope">A4 Envelope</option>
+                                    <option value="Bank challan">Bank challan</option>
+                                    <option value="Mask Normal">Mask Normal</option>
+                                    <option value="Clothe Mask">Clothe Mask</option>
+                                    <option value="Dairy">Dairy</option>
+                                    <option value="Mask N-95">Mask N-95</option>
+                                    <option value="File Sanatizer">File Sanatizer</option>
+                                    <option value="Double core Wire">Double core Wire</option>
+                                    <option value="Top 6A">Top 6A</option>
+                                    <option value="Top 16A">Top 16A</option>
+                                    <option value="PVC Tape">PVC Tape</option>
+                                    <option value="Capacitor">Capacitor</option>
+                                    <option value="DP MCB">DP MCB</option>
+                                    <option value="Xerox Paper">Xerox Paper</option>
+                                    <option value="Register Big">Register Big</option>
+                                    <option value="Colin">Colin</option>
+                                    <option value="Pen Refill">Pen Refill</option>
+                                    <option value="Celing Fan">Celing Fan</option>
+                                    <option value="Battery">Battery</option>
+                                    <option value="Invertor">Invertor</option>
+                                    <option value="Sanetizer Spray">Sanetizer Spray</option>
+                                    <option value="Hand Sanetizer">Hand Sanetizer</option>
+                                    <option value="Machine Token">Machine Token</option>
+                                    <option value="Computer">Computer</option>
+                                    <option value="Fevistick Big">Fevistick Big</option>
+                                    <option value="Stepler pin">Stepler Pin</option>
+                                    <option value="Stick Rib">Stick Rib</option>
+                                    <option value="Cello Tape">Cello Tape</option>
+                                    <option value="Pad">Pad</option>
+                                    <option value="Scissor">Scissor</option>
+                                    <option value="Pendrive">Pendrive</option>
+                                    <option value="Cartridge">Cartridge</option>
+                                    <option value="Dustbin">Dustbin</option>
+                                    <option value="Single punch">Single punch</option>
+                                    <option value="Takua">Takua</option>
+                                    <option value="Computer file">Computer file</option>
+                                    <option value="Calculator">Calculator</option>
+                                    <option value="Gems Clip">Gems Clip</option>
+                                    <option value="Paper clip">Paper Clip</option>
+                                    <option value="Cargo Tape">Cargo Tape</option>
+                                    <option value="Stamp Ink">Stamp Ink</option>
+                                    <option value="Anti Virus">Anti Virus</option>
+                                    <option value="Laser">Laser</option>
+                                    <option value="Mouse">Mouse</option>
+                                    <option value="Eraser">Eraser</option>
+                                    <option value="Cutter">Cutter</option>
+                                    <option value="3 Pin Top">3 Pin Top</option>
+                                    <option value="Socket">Socket</option>
+                                    <option value="Switch">Switch</option>
+                                    <option value="Color File">Color File</option>
+                                    <option value="White Page">White Page</option>
+                                    <option value="Fevicol">Fevicol</option>
+                                    <option value="Napthlene Ball">Napthlene Ball</option>
+                                    <option value="Table Pen stand">Table Pen stand</option>
+                                    <option value="Deep Stand">Deep Stand</option>
+                                    <option value="Punch Machine">Punch Machine</option>
+                                    <option value="Bulb LED">Bulb LED</option>
+                                    <option value="Calander">Calander</option>
+                                    <option value="Voucher">Voucher</option>
+                                    <option value="Attendance Register">Attendance Register</option>
+                                    <option value="Ledger Book">Ledger Book</option>
+
+
+
+
                                 </select>
                             </span>
                         </td>
@@ -138,7 +227,7 @@
             var cols = "";
 
             cols += '<td></td>'
-            cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="Default">Default</option><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option><option value="A4 Paper">A4 Paper</option><option value="Knife">Knife</option><option value="Scale">Scale</option><option value="Borad File">Borad File</option><option value="Clothe Duster">Clothe Duster</option><option value="Notesheet">Notesheet</option><option value="Fly leave">Fly leave</option><option value="Tag">Tag</option><option value="Gum">Gum</option><option value="Ink Pad">Ink Pad</option><option value="Clip File">Clip File</option><option value="Stepler">Stepler</option><option value="Highlighter">Highlighter</option><option value="Marker">Marker</option></select></span></td>';
+            cols += '<td><span class="custom-dropdown big"><select name="product.productName" id="productSelect"><option value="Default">Default</option><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option><option value="A4 Paper">A4 Paper</option><option value="Knife">Knife</option><option value="Scale">Scale</option><option value="Borad File">Borad File</option><option value="Clothe Duster">Clothe Duster</option><option value="Notesheet">Notesheet</option><option value="Fly leave">Fly leave</option><option value="Tag">Tag</option><option value="Gum">Gum</option><option value="Ink Pad">Ink Pad</option><option value="Clip File">Clip File</option><option value="Stepler">Stepler</option><option value="Highlighter">Highlighter</option><option value="Marker">Marker</option><option value="Wiper">Wiper</option><option value="Tubelight">Tubelight</option><option value="Harpic">Harpic</option><option value="Odonil">Odonil</option><option value="Fennile">Fennile</option><option value="A4 Envelope">A4 Envelope</option><option value="Bank challan">Bank challan</option><option value="Mask Normal">Mask Normal</option><option value="Clothe Mask">Clothe Mask</option><option value="Dairy">Dairy</option><option value="Mask N-95">Mask N-95</option><option value="File Sanatizer">File Sanatizer</option><option value="Double core Wire">Double core Wire</option><option value="Top 6A">Top 6A</option><option value="Top 16A">Top 16A</option><option value="PVC Tape">PVC Tape</option><option value="Capacitor">Capacitor</option><option value="DP MCB">DP MCB</option><option value="Xerox Paper">Xerox Paper</option><option value="Register Big">Register Big</option><option value="Colin">Colin</option><option value="Pen Refill">Pen Refill</option><option value="Celing Fan">Celing Fan</option><option value="Battery">Battery</option><option value="Invertor">Invertor</option><option value="Sanetizer Spray">Sanetizer Spray</option><option value="Hand Sanetizer">Hand Sanetizer</option><option value="Machine Token">Machine Token</option><option value="Computer">Computer</option><option value="Fevistick Big">Fevistick Big</option><option value="Stepler pin">Stepler Pin</option><option value="Stick Rib">Stick Rib</option><option value="Cello Tape">Cello Tape</option><option value="Pad">Pad</option><option value="Scissor">Scissor</option><option value="Pendrive">Pendrive</option><option value="Cartridge">Cartridge</option><option value="Dustbin">Dustbin</option><option value="Single punch">Single punch</option><option value="Takua">Takua</option><option value="Computer file">Computer file</option><option value="Calculator">Calculator</option><option value="Gems Clip">Gems Clip</option><option value="Paper clip">Paper Clip</option><option value="Cargo Tape">Cargo Tape</option><option value="Stamp Ink">Stamp Ink</option><option value="Anti Virus">Anti Virus</option><option value="Laser">Laser</option><option value="Mouse">Mouse</option><option value="Eraser">Eraser</option><option value="Cutter">Cutter</option><option value="3 Pin Top">3 Pin Top</option><option value="Socket">Socket</option><option value="Switch">Switch</option><option value="Color File">Color File</option><option value="White Page">White Page</option><option value="Fevicol">Fevicol</option><option value="Napthlene Ball">Napthlene Ball</option><option value="Table Pen stand">Table Pen stand</option><option value="Deep Stand">Deep Stand</option><option value="Punch Machine">Punch Machine</option><option value="Bulb LED">Bulb LED</option><option value="Calander">Calander</option><option value="Voucher">Voucher</option><option value="Attendance Register">Attendance Register</option><option value="Ledger Book">Ledger Book</option></select></span></td>';
             cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity"/></td>';
 
             cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';
@@ -146,23 +235,6 @@
             $("table.order-list").append(newRow);
             counter++;
         });
-
-        // ===================================================
-
-        $("#addform").on("click", function () {
-            var newRow = $("<tr>");
-            var cols = "";
-
-            cols += '<td></td>'
-            cols += '<td><span class="custom-dropdown big"><select name="product.productName"><option value="pen">Pen</option><option value="Pencil">Pencil</option><option value="Mask">Mask</option><option value="Sanetizer">Sanetizer</option><option value="Gloves">Gloves</option></select></span></td>';
-            cols += '<td><label for="quantityData">Product Quantity:</label><input type="text" id="quantityData" name="product.productQuantity' + counter + '" /></td>';
-
-            cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete"></td>';
-            newRow.append(cols);
-            $("table.order-list").append(newRow);
-            counter++;
-        });
-
         // ===================================================
 
         $("table.order-list").on("click", ".ibtnDel", function (event) {
@@ -188,8 +260,33 @@
         $("#grandtotal").text(grandTotal.toFixed(2));
     }
 
+    // ==========================================================================================================================================
+    // Sort the dropdown list for department list.
 
+    $(function () {
+        // choose target dropdown
+        var select = $('#departmentSelect');
+        select.html(select.find('option').sort(function (x, y) {
+            // to change to descending order switch "<" for ">"
+            return $(x).text() > $(y).text() ? 1 : -1;
+        }));
+    });
 
+    // Sort the dropdown list for product list.
+
+    $(function () {
+        // choose target dropdown
+        var select = $('#productSelect');
+        select.html(select.find('option').sort(function (x, y) {
+            // to change to descending order switch "<" for ">"
+            return $(x).text() > $(y).text() ? 1 : -1;
+        }));
+
+        // select default item after sorting (first item)
+        // $('select').get(0).selectedIndex = 0;
+    });
+
+// ====================================================================================================================================
     // function submitData() {
     //     var table = $("table tbody");
 
