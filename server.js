@@ -112,7 +112,7 @@ app.post("/adddata", function (req, res, next) {
     const item = new Item(req.body);
     item.save(function (err) {
         if (!err) {
-            res.redirect("/");
+            res.redirect("index");
         } else {
             res.send(err);
         }
